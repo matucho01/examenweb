@@ -36,7 +36,7 @@
                     <label>Fecha</label>
                     <input type="date" name="fecha" required>
                     <label>Valor</label>
-                    <input type="number" name="valor" id="" required>
+                    <input type="number" name="valor" step=".01" min="0" id="" required>
                     <label>Cuenta acreditada</label>
                     <select>
                         <c:forEach items="${cuentasingresoegreso}" var="cuentaingresoegreso">
