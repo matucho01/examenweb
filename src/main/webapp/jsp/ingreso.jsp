@@ -32,11 +32,11 @@
 			        	</c:forEach>
                     </select>
                     <label>Concepto</label>
-                    <input type="text" name="concepto">
+                    <input type="text" name="concepto" required>
                     <label>Fecha</label>
-                    <input type="date" name="fecha">
+                    <input type="date" name="fecha" required>
                     <label>Valor</label>
-                    <input type="text" name="valor" id="">
+                    <input type="number" name="valor" id="" required>
                     <label>Cuenta acreditada</label>
                     <select>
                         <c:forEach items="${cuentasingresoegreso}" var="cuentaingresoegreso">
