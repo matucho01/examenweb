@@ -14,8 +14,8 @@
         <div class="bg-black text-white p-3">Contabilidad Personal</div>
         <div class="bg-body-secondary pt-2 pb-1 ps-2">
             <ul class="list-inline">
-                <li class="list-inline-item"><a href="ingreso.html">Ingreso</a></li>
-                <li class="list-inline-item"><a href="">Egreso</a></li>
+                <li class="list-inline-item"><a href="GestionarMovimientoController?ruta=ingreso">Ingreso</a></li>
+                <li class="list-inline-item"><a href="GestionarMovimientoController?ruta=egreso">Egreso</a></li>
                 <li class="list-inline-item"><a href="">Transferencia</a></li>
                 <li class="list-inline-item"><a href="dashboard.html">Dashboard</a></li>
             </ul>
