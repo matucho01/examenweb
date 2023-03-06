@@ -48,7 +48,52 @@ public class RegistrarMovimientoController extends HttpServlet {
 		case "guardarIngreso":
 			saveIngreso(request, response);
 			break;
+		case "egreso":
+			showEgreso(request, response);
+			break;
+		case "guardarEgreso":
+			saveEgreso(request, response);
+			break;
 		}
+	}
+
+	private void saveEgreso(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int idCuentaOrigen = Integer.parseInt(request.getParameter("cuentaingresoegreso"));
+		Cuenta cuentaOrigen = DAOFactory.getFactory().getCuentaDAO().getById(idCuentaOrigen);
+		int idCuentaDestino = Integer.parseInt(request.getParameter("cuentaegreso"));
+		Cuenta cuentaDestino = DAOFactory.getFactory().getCuentaDAO().getById(idCuentaDestino);
+		String concepto = request.getParameter("concepto");
+		System.out.println(request.getParameter("fecha"));
+		Date fecha = null;
+		
+		try {
+			fecha = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("fecha"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		double valor = Double.parseDouble(request.getParameter("valor"));
+		
+		cuentaOrigen.setTotal(cuentaOrigen.getTotal()-valor);
+		cuentaDestino.setTotal(cuentaDestino.getTotal()-valor);
+		
+		Movimiento movimiento = new Movimiento(concepto, valor, fecha, cuentaOrigen, cuentaDestino);
+		DAOFactory.getFactory().getMovimientoDAO().create(movimiento);
+		
+		DAOFactory.getFactory().getCuentaDAO().update(cuentaOrigen);
+		DAOFactory.getFactory().getCuentaDAO().update(cuentaDestino);
+		request.getRequestDispatcher("DashboardController?ruta=ver").forward(request, response);
+		
+	}
+
+	private void showEgreso(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Cuenta> cuentasIngresoEgreso = DAOFactory.getFactory().getCuentaDAO().getByType(CuentaTipo.INGRESOGASTO);
+		List<Cuenta> cuentasEgreso = DAOFactory.getFactory().getCuentaDAO().getByType(CuentaTipo.GASTO);
+		
+		request.setAttribute("cuentasingresoegreso", cuentasIngresoEgreso);
+		request.setAttribute("cuentasegreso", cuentasEgreso);
+		
+		request.getRequestDispatcher("/jsp/egreso.jsp").forward(request, response);
+		
 	}
 
 	private void saveIngreso(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -73,6 +118,7 @@ public class RegistrarMovimientoController extends HttpServlet {
 		Movimiento movimiento = new Movimiento(concepto, valor, fecha, cuentaOrigen, cuentaDestino);
 		DAOFactory.getFactory().getMovimientoDAO().create(movimiento);
 		
+		DAOFactory.getFactory().getCuentaDAO().update(cuentaOrigen);
 		DAOFactory.getFactory().getCuentaDAO().update(cuentaDestino);
 		request.getRequestDispatcher("DashboardController?ruta=ver").forward(request, response);
 	}
