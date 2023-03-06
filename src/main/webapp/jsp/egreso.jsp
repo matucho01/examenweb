@@ -6,8 +6,48 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
+    <div class="container">
+        <div class="bg-black text-white p-3">Contabilidad Personal</div>
+        <div class="bg-body-secondary pt-2 pb-1 ps-2">
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="ingreso.html">Ingreso</a></li>
+                <li class="list-inline-item"><a href="">Egreso</a></li>
+                <li class="list-inline-item"><a href="">Transferencia</a></li>
+                <li class="list-inline-item"><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
 
+        <div>
+            <h1>Registro de Egreso ($$)</h1>
+
+            <form method="POST" action="RegistrarMovimientoController?ruta=guardarEgreso">
+                <fieldset class="d-flex flex-column">
+                    <label>Categoria Egreso</label>
+                    <select name = "cuentaingresoegreso">
+                        <c:forEach items="${cuentasingresoegreso}" var="cuentaingresoegreso">
+			        		<option value="${cuentaingresoegreso.id}" >${cuentaingresoegreso.nombre}</option>
+			        	</c:forEach>
+                    </select>
+                    <label>Concepto</label>
+                    <input type="text" name="concepto" required>
+                    <label>Fecha</label>
+                    <input type="date" name="fecha" required>
+                    <label>Valor</label>
+                    <input type="number" name="valor" step=".01" min="0" id="" required>
+                    <label>Cuenta acreditada</label>
+                    <select name = "cuentaegreso">
+                        <c:forEach items="${cuentasegreso}" var="cuentaegreso">
+			        		<option value="${cuentaegreso.id}" >${cuentaegreso.nombre}</option>
+			        	</c:forEach>
+                    </select>
+                    <br>
+                    <input type="submit" value="Guardar">
+                </fieldset>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
