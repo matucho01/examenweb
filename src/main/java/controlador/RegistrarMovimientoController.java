@@ -2,6 +2,7 @@ package controlador;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.dao.DAOFactory;
 import modelo.entidades.Cuenta;
 import modelo.entidades.CuentaTipo;
+import modelo.entidades.Movimiento;
 
 /**
  * Servlet implementation class RegistrarMovimientoController
@@ -48,9 +50,20 @@ public class RegistrarMovimientoController extends HttpServlet {
 
 	private void saveIngreso(HttpServletRequest request, HttpServletResponse response) {
 		int idCuentaOrigen = Integer.parseInt(request.getParameter("cuentaingreso"));
+		Cuenta cuentaOrigen = DAOFactory.getFactory().getCuentaDAO().getById(idCuentaOrigen);
 		int idCuentaDestino = Integer.parseInt(request.getParameter("cuentaingresoegreso"));
+		Cuenta cuentaDestino = DAOFactory.getFactory().getCuentaDAO().getById(idCuentaDestino);
 		String concepto = request.getParameter("concepto");
-		LocalDate fecha = request.getParameter("fecha");
+		Date fecha = null;
+		double valor = Double.parseDouble(request.getParameter("valor"));
+		
+		cuentaOrigen.setTotal(cuentaOrigen.getTotal()+valor);
+		cuentaDestino.setTotal(cuentaDestino.getTotal()+valor);
+		
+		Movimiento movimiento = new Movimiento(concepto, valor, fecha, cuentaOrigen, cuentaDestino);
+		DAOFactory.getFactory().getMovimientoDAO().create(movimiento);
+		
+		DAOFactory.getFactory().getCuentaDAO().update(cuentaDestino);
 		
 	}
 
