@@ -51,6 +51,15 @@ public class JPACuentaDAO extends JPAGenericDAO<Cuenta, Integer> implements Cuen
 		return query.getResultList();
 	}
 
+	@Override
+	public List<Cuenta> getByType(CuentaTipo tipo) {
+		String JPQL = "SELECT c FROM Cuenta c "
+				+ "WHERE c.tipo = :tipo";
+		Query query = em.createQuery(JPQL);
+		query.setParameter("tipo", tipo);
+		return query.getResultList();
+	}
+
 
 	
 	
