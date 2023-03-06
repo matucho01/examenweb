@@ -2,6 +2,8 @@ package controlador;
 
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -49,13 +51,20 @@ public class RegistrarMovimientoController extends HttpServlet {
 		}
 	}
 
-	private void saveIngreso(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void saveIngreso(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		int idCuentaOrigen = Integer.parseInt(request.getParameter("cuentaingreso"));
 		Cuenta cuentaOrigen = DAOFactory.getFactory().getCuentaDAO().getById(idCuentaOrigen);
 		int idCuentaDestino = Integer.parseInt(request.getParameter("cuentaingresoegreso"));
 		Cuenta cuentaDestino = DAOFactory.getFactory().getCuentaDAO().getById(idCuentaDestino);
 		String concepto = request.getParameter("concepto");
-		Date fecha = new Date(request.getParameter("fecha"));
+		System.out.println(request.getParameter("fecha"));
+		Date fecha = null;
+		
+		try {
+			fecha = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("fecha"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		double valor = Double.parseDouble(request.getParameter("valor"));
 		
 		cuentaOrigen.setTotal(cuentaOrigen.getTotal()+valor);
@@ -65,7 +74,7 @@ public class RegistrarMovimientoController extends HttpServlet {
 		DAOFactory.getFactory().getMovimientoDAO().create(movimiento);
 		
 		DAOFactory.getFactory().getCuentaDAO().update(cuentaDestino);
-		request.getRequestDispatcher("DashboardController").forward(request, response);
+		request.getRequestDispatcher("DashboardController?ruta=ver").forward(request, response);
 	}
 
 	private void showIngreso(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

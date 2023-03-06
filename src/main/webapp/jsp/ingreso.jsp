@@ -26,7 +26,7 @@
             <form method="POST" action="RegistrarMovimientoController?ruta=guardarIngreso">
                 <fieldset class="d-flex flex-column">
                     <label>Categoria Ingreso</label>
-                    <select>
+                    <select name="cuentaingreso">
                         <c:forEach items="${cuentasingreso}" var="cuentaingreso">
 			        		<option value="${cuentaingreso.id}" >${cuentaingreso.nombre}</option>
 			        	</c:forEach>
@@ -38,7 +38,7 @@
                     <label>Valor</label>
                     <input type="number" name="valor" step=".01" min="0" id="" required>
                     <label>Cuenta acreditada</label>
-                    <select>
+                    <select  name="cuentaingresoegreso">
                         <c:forEach items="${cuentasingresoegreso}" var="cuentaingresoegreso">
 			        		<option value="${cuentaingresoegreso.id}" >${cuentaingresoegreso.nombre}</option>
 			        	</c:forEach>
