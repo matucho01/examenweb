@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+*{padding: 0px; margin: 0px; box-sizing:border-box; color: #1A2D68; font-family: 'Roboto', sans-serif;}
+body{background-color: #626980;}
+.c-green{color: #39A16C;}
+.c-red{color: #ED6666;}
+.c-blue{color: #1A2D68;}
+.c-celeste{color: #6385EC;}
+
+.bg-zul{background-color:#C9CEDF;}
+.fs-dato{font-size: 80px;}
+.fs-subtext{font-size: 20px; color: #1A2D68;}
+.fs-action{font-size: 11px; color: #39A16C; font-weight: bold;}
+.titulo{margin-left:10px; font-size: 30px; color: #1A2D68; font-weight: bold;}
+.enlace{font-size: 18px; color: #1A2D68; font-weight: bold;}
+.title-card{margin-left:10px; font-size: 28px; color: #1A2D68; font-weight: bold;}
+.content-card{margin-right: 13px; font-size: 28px; font-weight: bold;}
+
+header{height: 100px;}
+
+.summary{border-top: 1px solid #1A2D68; border-bottom: 1px solid #1A2D68;}
+
+.summary > div:nth-child(2){border-left: 1px solid #1A2D68; border-right: 1px solid #1A2D68;}
+
+ul li a{
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+
+ul li a:hover{
+    color:#6385EC;
+    text-decoration: underline;
+}
+
+.guardar{background-color: #1A2D68; color: white; height: 35px;}
+.guardar:hover{background-color: #142453; height: 38px;}
+.logo{width: 250px; height: 80px;}
+
+.cards > div{border-radius: 10px; border: 1px solid #1A2D68; width: 500px;}

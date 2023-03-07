@@ -5,77 +5,83 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Fluxé | Tu amigo en finanzas</title>
+<link rel="stylesheet" href="./css/dashboard.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-    
-    <div class="container">
-        <div class="bg-black text-white p-3">Contabilidad Personal</div>
-        <div class="bg-body-secondary pt-2 pb-1 ps-2">
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="RegistrarMovimientoController?ruta=ingreso">Ingreso</a></li>
-                <li class="list-inline-item"><a href="RegistrarMovimientoController?ruta=egreso">Egreso</a></li>
-                <li class="list-inline-item"><a href="">Transferencia</a></li>
-                <li class="list-inline-item"><a href="dashboard.html">Dashboard</a></li>
+    <header class="d-flex align-items-center bg-zul">
+        <img class="logo p-2" src="./assets/logo.png" alt="logo de la aplicación fluxe">
+            <ul class="list-inline d-flex mt-5">
+                <li><a href="DashboardController?ruta=ver" class="enlace list-inline-item m-2">Dashboard</a></li>
+                <li><a href="RegistrarMovimientoController?ruta=ingreso" class="enlace list-inline-item m-2">Incomes</a></li>
+                <li><a href="RegistrarMovimientoController?ruta=egreso" class="enlace list-inline-item m-2">Expenses</a></li>
             </ul>
-        </div>
-        <div>
-        	<form method="get" action="DashboardController?ruta=ver">
-        	Mes:
-        	<select>
-        	<c:forEach items="${meses}" var="mes">
-        		<option value="${mes.id}" ${mes.id== messeleccionado ? 'selected':''} >${mes.nombre}</option>
-        	</c:forEach>
-        	</select>
-        	</form>
-      
-        </div>
-        <div class="row">
-            <div class="col-2">
-                <h1>Cuentas</h1>
-             
-                <c:forEach items="${ingresogastos}" var="ingresogasto">
-	                <div class="bg-body-secondary text-dark border rounded text-center mt-3">
-	                    <h4>${ingresogasto.nombre}</h4>
-	                    <div>${ingresogasto.total}</div>
-	                    <div><a href="">Movimientos</a></div>
-	                </div>
-                </c:forEach>
-
-                
-                
-                
+        <div class="ms-auto me-4 p-2 fa-solid fa-user-circle fa-4x"></div>
+    </header>
+    <div class="mt-3 mb-3 bg-zul">
+        <h1 class="titulo mt-2">Summary</h1>
+    </div>
+    <div>
+        <form method="get" action="DashboardController?ruta=ver">
+        <span class="ms-2 me-2 fs-subtext fw-bold">Mes:</span> 
+        <select class="border rounded">
+        <c:forEach items="${meses}" var="mes">
+            <option value="${mes.id}" ${mes.id== messeleccionado ? 'selected':''} >${mes.nombre}</option>
+        </c:forEach>
+        </select>
+        </form>
+  
+    </div>
+    
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="summary d-flex w-100 m-2 justify-content-center ms-5 me-5">
+            <c:forEach items="${ingresos}" var="ingreso">
+            <div>
+                <h2 class="fs-dato c-celeste mt-3">$${ingreso.totalcalculado}</h2>
+                <h6 class="fs-subtext">${ingreso.nombre}</h6>
             </div>
-            <div class="col-10">
-                <h1>Cuentas INGRESO</h1>
-                
-                 <c:forEach items="${ingresos}" var="ingreso">
-	                <div class="bg-body-secondary text-dark border rounded text-center mt-3">
-	                    <h4>${ingreso.nombre}</h4>
-	                    <div>${ingreso.totalcalculado}</div>
-	                    <div><a href="">Movimientos</a></div>
-	                </div>
-                </c:forEach>
-                
-                <h1>Cuentas EGRESO</h1>
-
-                <div class="d-inline-flex p-2">
-
-                    <c:forEach items="${egresos}" var="egreso">
-	                <div class="bg-body-secondary text-dark border rounded text-center mt-3">
-	                    <h4>${egreso.nombre}</h4>
-	                    <div>${egreso.totalcalculado}</div>
-	                    <div><a href="">Movimientos</a></div>
-	                </div>
-                </c:forEach>
-               
-                   
+             </c:forEach>
+        </div>
+    </div>
+    <div class="mt-3 mb-3 bg-zul">
+        <h2 class="titulo">Incomes</h2>
+    </div>
+    <div class="cards d-flex overflow-x-auto">
+        <c:forEach items="${ingresogastos}" var="ingresogasto">
+            <div class="m-4 mt-0">
+                <div class="d-flex justify-content-between align-items-center mb-0">
+                    <h2 class="title-card m-2 me-4 mb-0">${ingresogasto.nombre}</h2>
+                    <div class="fa-solid fa-file-invoice fa-2x ms-5 me-3"></div>
+                </div>
+                <div class="ms-1 mt-3 mb-1 d-flex justify-content-between align-items-center">
+                    <div class="fs-subtext ms-2">Total</div>
+                    <div class="content-card c-green">$${ingresogasto.total}</div>
                 </div>
             </div>
-
-        </div>
-
+    </c:forEach>
     </div>
+    <div class="mt-3 mb-3 bg-zul">
+        <h2 class="titulo">Expenses</h2>
+    </div>
+    <div class="cards d-flex overflow-x-auto">
+        <c:forEach items="${egresos}" var="egreso">
+            <div class="m-4 mt-0">
+                <div class="d-flex justify-content-between align-items-center mb-0">
+                    <h2 class="title-card m-2 me-4 mb-0">${egreso.nombre}</h2>
+                    <div class="fa-solid fa-file-invoice fa-2x ms-5 me-3"></div>
+                </div>
+                <div class="ms-1 mt-3 mb-1 d-flex justify-content-between align-items-center">
+                    <div class="fs-subtext ms-2">Total</div>
+                    <div class="content-card c-green">$${egreso.totalcalculado}</div>
+                </div>
+            </div>
+    </c:forEach>
+    </div>
+    <footer class="d-flex flex-column align-items-center bg-zul mt-4">
+        <div class="enlace m-4">Aplicaciones Web</div>
+        <div class="fs-subtext m-3">Grupo 6 </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/222f6f8069.js" crossorigin="anonymous"></script>
 </body>
 </html>
