@@ -38,6 +38,7 @@ public class DashboardController extends HttpServlet {
 			break;
 		}
 	}
+	
 	private void showDashboard(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int mes = LocalDate.now().getMonth().getValue();
 		
