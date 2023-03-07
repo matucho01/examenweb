@@ -28,17 +28,17 @@
                         <label class="enlace fw-bold me-3">Concept</label>
                         <input type="text" name="concepto" class="border rounded w-50 mt-3 mb-4 p-2" placeholder="Transportation" required>
                     </div>
-                    <div class="d-flex flex-column align-items-center">
+                    <div class="d-flex flex-column ">
                         <div class="d-flex justify-content-center mt-2 mb-5">
                             <label class="enlace fw-bold ms-2">Expense account</label>
-                            <select name="cuentaingresoegreso" class="border rounded mt-2 me-3">
+                            <select name="cuentaingresoegreso" class="border rounded w-50 mt-2 me-3">
                                 <c:forEach items="${cuentasingresoegreso}" var="cuentaingresoegreso">
                                     <option value="${cuentaingresoegreso.id}" >${cuentaingresoegreso.nombre}</option>
                                 </c:forEach>
                             </select>
     
                             <label class="enlace fw-bold me-2">Transfer account </label>
-                            <select  name="cuentasegreso" class="border rounded mt-2" >
+                            <select  name="cuentasegreso" class="border rounded mt-2 w-50" >
                                 <c:forEach items="${cuentasegreso}" var="cuentaegreso">
                                     <option value="${cuentaegreso.id}" >${cuentaegreso.nombre}</option>
                                 </c:forEach>
@@ -51,11 +51,13 @@
                             </div>
                             <div class="me-4 col-6">
                                 <label class="enlace fw-bold me-4">Date</label>
-                                <input type="date" name="fecha" class="p-2 border rounded mt-3 ms-3 w-75" required>
+                                <input type="date" name="fecha" class="p-2 border rounded mt-3 ms-3 w-50" required>
                             </div>
                         </div>
                         <br>
-                        <input type="submit" value="Save" class="border rounded w-25 fw-bold m-5 guardar">
+                        <div class="w-100 d-flex justify-content-center">
+                        	<input type="submit" value="Save" class="border rounded w-25 fw-bold m-2 guardar">
+                        </div>
                     </div>
                 </fieldset>
             </form>
