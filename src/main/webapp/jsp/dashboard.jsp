@@ -27,16 +27,16 @@
 		</ul>
 		<div class="ms-auto me-4 p-2 fa-solid fa-user-circle fa-4x"></div>
 	</header>
-	<div>
+	<div class="mt-3">
 		<form method="get" action="DashboardController?ruta=ver">
-			<span class="ms-2 me-2 fs-subtext fw-bold">Mes:</span> <select name="mes"
-				class="border rounded">
+			<span class="ms-2 me-2 fs-subtext fw-bold">Month:</span> 
+			<select name="mes" class="border rounded">
 				<c:forEach items="${meses}" var="mes">
 					<option value="${mes.id}"
 						${mes.id== messeleccionado ? 'selected':''}>${mes.nombre}</option>
 				</c:forEach>	
 			</select>
-			<input type="submit" value="Save" >
+			<input type="submit" value="Save" class="ms-4 button-save">
 		</form>
 	</div>
 	
@@ -91,7 +91,7 @@
 				<div
 					class="ms-1 mt-3 mb-1 d-flex justify-content-between align-items-center">
 					<div class="fs-subtext ms-2">Total</div>
-					<div class="content-card c-green">$${egreso.totalcalculado}</div>
+					<div class="content-card c-red">$${egreso.totalcalculado}</div>
 				</div>
 			</div>
 		</c:forEach>

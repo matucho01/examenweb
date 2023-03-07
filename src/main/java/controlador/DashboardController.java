@@ -36,7 +36,11 @@ public class DashboardController extends HttpServlet {
 		case "ver":
 			showDashboard(request, response);
 			break;
-		}
+		
+		case "login":
+			showDashboard(request, response);
+			break;
+	}
 	}
 	
 	private void showDashboard(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

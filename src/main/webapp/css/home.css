@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+*{padding: 0px; margin: 0px; box-sizing:border-box; color: #1A2D68; font-family: 'Roboto', sans-serif;}
+
+.c-red{color: #ED6666; font-size: 30px;}
+.c-blue{color: #1A2D68;}
+.c-celeste{color: #6385EC;}
+.c-white{color: white;}
+
+.barra img{
+    margin-top: 5%;
+    width: 75%;   
+
+}
+.barra p{
+    font-size: 33px;
+    padding-top: 2%;
+}
+.barra button{
+    width: 140px;
+    margin: 3%;
+    justify-content: end;
+    align-items: end;
+}
+
+.button-login{
+    border: 1px #1A2D68 solid;
+    border-radius: 25px;
+    background-color: #1A2D68;
+    color: white;
+    height: 40px;
+    cursor: pointer;
+}
+
+.button-login:hover{
+    background-color: rgba(237, 102, 102, 0);
+    border: 1px #1A2D68 solid;
+    
+}
+.button-create{
+    border: 1px #1A2D68 solid;
+    border-radius: 25px;
+    background-color: rgba(237, 102, 102, 0);
+    height: 40px;
+    cursor: pointer;
+}
+
+.button-create:hover{
+    background-color: #1A2D68;
+    color: white;
+}
+
+.button-option:hover{
+    background-color: #1A2D68;
+    color: white;
+}
+
+.container-fluid .uno{
+  height: 200px;  
+}
+.container-fluid .dos{
+    height: 60px;  
+}
+.container-fluid .tres{
+    height: 200px;  
+}
+.home-img{
+    width: 30%;
+}
+
+.sombra{background-color: #ED6666; width: 80%; height: 50px;position: absolute; top: 145px; left: 10%; z-index: -1;}
+
+.sombra2{background-color: #ED6666; width: 80%; height: 50px;position: absolute; top: 270px; left: 10%; z-index: -1;}
+
+.carrusel .img-car{border: 1px solid #1A2D68; width: 260px; height: 220px; border-radius: 15px;}
+
+.carrusel .img-car img{height: 100%; width: 100%;}

@@ -39,3 +39,19 @@ ul li a:hover{
 .logo{width: 250px; height: 80px;}
 
 .cards > div{border-radius: 10px; border: 1px solid #1A2D68; width: 500px;}
+
+.button-save{
+    border: 1px #1A2D68 solid;
+    border-radius: 25px;
+    background-color: rgba(237, 102, 102, 0);
+    color:#1A2D68;
+    height: 40px;
+    width:100px;
+    cursor: pointer;
+}
+
+.button-save:hover{
+    background-color: #1A2D68;
+    border: 1px #1A2D68 solid;
+    color: white;
+}
