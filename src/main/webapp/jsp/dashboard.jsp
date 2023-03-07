@@ -29,13 +29,14 @@
 	</header>
 	<div>
 		<form method="get" action="DashboardController?ruta=ver">
-			<span class="ms-2 me-2 fs-subtext fw-bold">Mes:</span> <select
+			<span class="ms-2 me-2 fs-subtext fw-bold">Mes:</span> <select name="mes"
 				class="border rounded">
 				<c:forEach items="${meses}" var="mes">
 					<option value="${mes.id}"
 						${mes.id== messeleccionado ? 'selected':''}>${mes.nombre}</option>
-				</c:forEach>
+				</c:forEach>	
 			</select>
+			<input type="submit" value="Save" >
 		</form>
 	</div>
 	
