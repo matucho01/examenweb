@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 *{padding: 0px; margin: 0px; box-sizing:border-box; color: #1A2D68; font-family: 'Roboto', sans-serif;}
 body{background-color: #626980;}
+.bg-color{background-color: #626980;}
 .c-green{color: #39A16C;}
 .c-red{color: #ED6666;}
 .c-blue{color: #1A2D68;}
