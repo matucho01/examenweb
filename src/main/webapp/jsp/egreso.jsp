@@ -26,18 +26,18 @@
                 <fieldset>
                     <div class="start-0 top-50 ms-3">
                         <label class="enlace fw-bold me-3">Concept</label>
-                        <input type="text" name="concepto" class="border rounded w-50 mt-3 mb-4 p-2" placeholder="Transportation" required>
+                        <input type="text" name="concepto" class="border rounded w-50 mt-3 mb-4 p-2" placeholder="p.ej. transporte, helado, hamburguesa" required>
                     </div>
                     <div class="d-flex flex-column ">
                         <div class="d-flex justify-content-center mt-2 mb-5">
-                            <label class="enlace fw-bold ms-2">Expense account</label>
+                            <label class="enlace fw-bold ms-2">Source account</label>
                             <select name="cuentaingresoegreso" class="border rounded w-50 mt-2 me-3">
                                 <c:forEach items="${cuentasingresoegreso}" var="cuentaingresoegreso">
                                     <option value="${cuentaingresoegreso.id}" >${cuentaingresoegreso.nombre}</option>
                                 </c:forEach>
                             </select>
     
-                            <label class="enlace fw-bold me-2">Transfer account </label>
+                            <label class="enlace fw-bold me-2">Destination account </label>
                             <select  name="cuentasegreso" class="border rounded mt-2 w-50" >
                                 <c:forEach items="${cuentasegreso}" var="cuentaegreso">
                                     <option value="${cuentaegreso.id}" >${cuentaegreso.nombre}</option>
