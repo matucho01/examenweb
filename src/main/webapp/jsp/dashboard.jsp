@@ -91,7 +91,7 @@
 				<div
 					class="ms-1 mt-3 mb-1 d-flex justify-content-between align-items-center">
 					<div class="fs-subtext ms-2">Total</div>
-					<div class="content-card c-green">$${egreso.totalcalculado}</div>
+					<div class="content-card c-red">$${egreso.totalcalculado}</div>
 				</div>
 			</div>
 		</c:forEach>
