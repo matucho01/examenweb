@@ -26,7 +26,7 @@
                 <fieldset>
                     <div class="start-0 top-50 ms-3">
                         <label class="enlace fw-bold me-3">Concept</label>
-                        <input type="text" name="concepto" class="border rounded w-50 mt-3 mb-4 p-2" placeholder="p.ej.Pago sueldo, chaucha, cobro." required>
+                        <input type="text" name="concepto" class="border rounded w-50 mt-3 mb-4 p-2" placeholder="p.ej. Pago sueldo, chaucha, cobro." required>
                     </div>
                     <div class="d-flex flex-column">
                         <div class="d-flex justify-content-center mt-2 mb-5">
