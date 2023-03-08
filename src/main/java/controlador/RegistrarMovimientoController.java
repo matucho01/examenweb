@@ -86,7 +86,8 @@ public class RegistrarMovimientoController extends HttpServlet {
 			DAOFactory.getFactory().getCuentaDAO().update(cuentaOrigen);
 			DAOFactory.getFactory().getCuentaDAO().update(cuentaDestino);
 		} else {
-			request.getRequestDispatcher("RegistrarMovimientoController?ruta=egreso").forward(request, response);
+			//request.getRequestDispatcher("RegistrarMovimientoController?ruta=egreso").forward(request, response);
+			request.getRequestDispatcher("/jsp/error.jsp").forward(request, response);
 		}
 		
 		request.getRequestDispatcher("DashboardController?ruta=ver").forward(request, response);
