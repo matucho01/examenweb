@@ -93,7 +93,7 @@
 
 <body class="vsc-initialized">
   <div class="error-container">
-    <h1>404</h1>
+    <h1>400</h1>
     <p class="return">Something went wrong with the transfer. Check the values entered. <br> Take me back to <strong><a href="DashboardController?ruta=ver">dashboard</a></strong></p>
   </div>
 </body>
