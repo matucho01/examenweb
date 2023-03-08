@@ -19,7 +19,7 @@
             <div class="col-5 box_left">
                 <div class="row row_logo">
                     <div class="col logo">
-                        <img src="./images/logo.png" onclick="location.href='DashboardController?ruta=ver'">
+                        <img src="./images/logo.png" onclick="location.href='AutorizarController?ruta=ingresar'">
                     </div>
                 </div>
                 <div class="row row_imagen">
@@ -41,10 +41,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form class="formulario">
+                    <form class="formulario" method="POST" action="AutorizarController?ruta=login">
                         <div class="col">
                             <label for="username" class="fw-bold fs-5">Username</label>
-                            <input type="username" class="form-control" name="username" placeholder="Type an username">
+                            <input type="username" class="form-control" name="usuario" placeholder="Type a username">
                         </div>
                         <div>
                             <label for="password" class="fw-bold fs-5">Password</label>

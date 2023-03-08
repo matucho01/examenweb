@@ -46,16 +46,16 @@ public class AutorizarController extends HttpServlet {
 	private void login(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		// 1.- Obtengo parametros
-		String usuario = request.getParameter("username");
+		String usuario = request.getParameter("usuario");
 		String clave = request.getParameter("password");
 		
 		// 2.- Llamo al modelo
-		Usuario personaAutorizada = null;
-		personaAutorizada = DAOFactory.getFactory().getUsuarioDAO().autorizar(usuario, clave);
-		if (personaAutorizada != null) {
+		Usuario usuarioAutorizado = null;
+		usuarioAutorizado = DAOFactory.getFactory().getUsuarioDAO().autorizar(usuario, clave);
+		if (usuarioAutorizado != null) {
 			// Creo la sesion y le dejo pasar
 			HttpSession sesion = request.getSession();
-			sesion.setAttribute("usuarioLogeado", personaAutorizada);
+			sesion.setAttribute("usuarioLogeado", usuarioAutorizado);
 			
 			// 3.- Llamo al siguiente controlador
 			request.getRequestDispatcher("DashboardController?ruta=ver").forward(request, response);
