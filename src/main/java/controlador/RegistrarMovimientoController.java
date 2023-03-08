@@ -1,6 +1,7 @@
 package controlador;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -73,8 +74,19 @@ public class RegistrarMovimientoController extends HttpServlet {
 		}
 		double valor = Double.parseDouble(request.getParameter("valor"));
 		
-		cuentaOrigen.setTotal(cuentaOrigen.getTotal()-valor);
-		cuentaDestino.setTotal(cuentaDestino.getTotal()-valor);
+		System.out.println("valor " + valor + " getTotal " + cuentaOrigen.getTotal());
+		
+		if (cuentaOrigen.getTotal() >= valor) {
+			cuentaOrigen.setTotal(cuentaOrigen.getTotal()-valor);
+			cuentaDestino.setTotal(cuentaDestino.getTotal()-valor);
+		} else {
+			//request.getRequestDispatcher("/jsp/error.jsp").forward(request, response);
+			PrintWriter out = response.getWriter();
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('NO HAY PLATA');");
+			out.println("location='index.jsp';");
+			out.println("</script>");
+		}
 		
 		Movimiento movimiento = new Movimiento(concepto, valor, fecha, cuentaOrigen, cuentaDestino);
 		DAOFactory.getFactory().getMovimientoDAO().create(movimiento);

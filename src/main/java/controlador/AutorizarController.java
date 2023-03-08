@@ -62,7 +62,7 @@ public class AutorizarController extends HttpServlet {
 			
 		} else {
 			// Me la regreso al Login
-			response.sendRedirect("jsp/login.jsp");
+			response.sendRedirect("/jsp/login.jsp");
 		}
 		
 		// 3.- Llamo a la vista
