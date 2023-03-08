@@ -36,7 +36,6 @@
 						${mes.id== messeleccionado ? 'selected':''}>${mes.nombre}</option>
 				</c:forEach>	
 			</select>
-			<input type="submit" value="Save" class="ms-4 button-save">
 		</form>
 	</div>
 	
