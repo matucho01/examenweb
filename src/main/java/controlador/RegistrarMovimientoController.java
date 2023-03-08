@@ -91,6 +91,7 @@ public class RegistrarMovimientoController extends HttpServlet {
 			PrintWriter out = response.getWriter(); 
 			out.println("<script type=\"text/javascript\">"); 
 			out.println("alert('NO HAY PLATA');"); 
+			out.println("location='/jsp/dashboard.jsp';");
 			out.println("</script>"); 
 		}
 		
