@@ -79,20 +79,21 @@ public class RegistrarMovimientoController extends HttpServlet {
 		if (cuentaOrigen.getTotal() >= valor) {
 			cuentaOrigen.setTotal(cuentaOrigen.getTotal()-valor);
 			cuentaDestino.setTotal(cuentaDestino.getTotal()-valor);
+			
+			Movimiento movimiento = new Movimiento(concepto, valor, fecha, cuentaOrigen, cuentaDestino);
+			DAOFactory.getFactory().getMovimientoDAO().create(movimiento);
+			
+			DAOFactory.getFactory().getCuentaDAO().update(cuentaOrigen);
+			DAOFactory.getFactory().getCuentaDAO().update(cuentaDestino);
 		} else {
 			//request.getRequestDispatcher("/jsp/error.jsp").forward(request, response);
-			PrintWriter out = response.getWriter();
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('NO HAY PLATA');");
-			out.println("location='index.jsp';");
-			out.println("</script>");
+			response.setContentType("text/html"); 
+			PrintWriter out = response.getWriter(); 
+			out.println("<script type=\"text/javascript\">"); 
+			out.println("alert('NO HAY PLATA');"); 
+			out.println("</script>"); 
 		}
 		
-		Movimiento movimiento = new Movimiento(concepto, valor, fecha, cuentaOrigen, cuentaDestino);
-		DAOFactory.getFactory().getMovimientoDAO().create(movimiento);
-		
-		DAOFactory.getFactory().getCuentaDAO().update(cuentaOrigen);
-		DAOFactory.getFactory().getCuentaDAO().update(cuentaDestino);
 		request.getRequestDispatcher("DashboardController?ruta=ver").forward(request, response);
 		
 	}
