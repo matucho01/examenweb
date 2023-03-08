@@ -30,13 +30,12 @@
 	<div class="mt-3">
 		<form method="get" action="DashboardController?ruta=ver">
 			<span class="ms-2 me-2 fs-subtext fw-bold">Month:</span> 
-			<select name="mes" class="border rounded">
+			<select onchange="this.form.submit()" name="mes" class="border rounded">
 				<c:forEach items="${meses}" var="mes">
 					<option value="${mes.id}"
 						${mes.id== messeleccionado ? 'selected':''}>${mes.nombre}</option>
 				</c:forEach>	
 			</select>
-			<input type="submit" value="Guardar"/>
 		</form>
 	</div>
 	

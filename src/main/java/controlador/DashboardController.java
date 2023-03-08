@@ -35,21 +35,22 @@ public class DashboardController extends HttpServlet {
 
 	private void ruteador(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String ruta = (request.getParameter("ruta") == null ? "home" : request.getParameter("ruta"));
+		String ruta = (request.getParameter("ruta") == null ? "ver" : request.getParameter("ruta"));
 
 		switch (ruta) {
-		case "home":
-			showHome(request, response);
-			break;
 		case "ver":
 			showDashboard(request, response);
 			break;
+		case "login":
+			showLogin(request, response);
+			break;
 		}
+		
 	}
 
-	private void showHome(HttpServletRequest request, HttpServletResponse response)
+	private void showLogin(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("/jsp/home.jsp").forward(request, response);
+		request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
 
 	}
 
