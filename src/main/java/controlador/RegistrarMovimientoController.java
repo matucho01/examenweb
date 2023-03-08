@@ -66,7 +66,6 @@ public class RegistrarMovimientoController extends HttpServlet {
 		int idCuentaDestino = Integer.parseInt(request.getParameter("cuentaegreso"));
 		Cuenta cuentaDestino = DAOFactory.getFactory().getCuentaDAO().getById(idCuentaDestino);
 		String concepto = request.getParameter("concepto");
-		System.out.println(request.getParameter("fecha"));
 		Date fecha = null;
 		
 		try {
