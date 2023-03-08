@@ -6,7 +6,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>(404) The page you were looking for doesn't exist.</title>
+  <title>(400) Bad request.</title>
   <link rel="shortcut icon" href="./assets/f.png"/>
   <style type="text/css">
     html,
