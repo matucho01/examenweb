@@ -14,11 +14,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import modelo.dao.DAOFactory;
 import modelo.entidades.Cuenta;
 import modelo.entidades.CuentaTipo;
 import modelo.entidades.Movimiento;
+import modelo.entidades.Usuario;
 
 /**
  * Servlet implementation class RegistrarMovimientoController
@@ -100,9 +102,12 @@ public class RegistrarMovimientoController extends HttpServlet {
 	}
 
 	private void showEgreso(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession sesion = request.getSession();
+		Usuario usuario = (Usuario)sesion.getAttribute("usuarioLogeado");
 		List<Cuenta> cuentasIngresoEgreso = DAOFactory.getFactory().getCuentaDAO().getByType(CuentaTipo.INGRESOGASTO);
 		List<Cuenta> cuentasEgreso = DAOFactory.getFactory().getCuentaDAO().getByType(CuentaTipo.GASTO);
 		
+		request.setAttribute("nombreusuario", usuario.getNombre());
 		request.setAttribute("cuentasingresoegreso", cuentasIngresoEgreso);
 		request.setAttribute("cuentasegreso", cuentasEgreso);
 		
@@ -138,9 +143,12 @@ public class RegistrarMovimientoController extends HttpServlet {
 	}
 
 	private void showIngreso(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession sesion = request.getSession();
+		Usuario usuario = (Usuario)sesion.getAttribute("usuarioLogeado");
 		List<Cuenta> cuentasIngreso = DAOFactory.getFactory().getCuentaDAO().getByType(CuentaTipo.INGRESO);
 		List<Cuenta> cuentasIngresoEgreso = DAOFactory.getFactory().getCuentaDAO().getByType(CuentaTipo.INGRESOGASTO);
 		
+		request.setAttribute("nombreusuario", usuario.getNombre());
 		request.setAttribute("cuentasingreso", cuentasIngreso);
 		request.setAttribute("cuentasingresoegreso", cuentasIngresoEgreso);
 		

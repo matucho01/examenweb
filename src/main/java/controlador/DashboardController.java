@@ -9,10 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import modelo.dao.DAOFactory;
 import modelo.dto.CuentaDTO;
 import modelo.entidades.Cuenta;
+import modelo.entidades.Usuario;
 import utilidades.Mes;
 
 @WebServlet("/DashboardController")
@@ -56,6 +58,9 @@ public class DashboardController extends HttpServlet {
 
 	private void showDashboard(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession sesion = request.getSession();
+		Usuario usuario = (Usuario)sesion.getAttribute("usuarioLogeado");
+		
 		int mes = LocalDate.now().getMonth().getValue();
 
 		if (request.getParameter("mes") != null) {
@@ -65,7 +70,8 @@ public class DashboardController extends HttpServlet {
 		List<CuentaDTO> conjuntoingresos = DAOFactory.getFactory().getCuentaDAO().getConsolidadoCuentasIngreso(mes);
 		List<CuentaDTO> conjuntogastos = DAOFactory.getFactory().getCuentaDAO().getConsolidadoCuentsEgreso(mes);
 		List<Cuenta> conjuntoingresogasto = DAOFactory.getFactory().getCuentaDAO().getConsolidadoCuentasIngresoEgreso();
-
+		
+		request.setAttribute("nombreusuario", usuario.getNombre());
 		request.setAttribute("messeleccionado", mes);
 		request.setAttribute("meses", Mes.getMeses());
 		request.setAttribute("ingresos", conjuntoingresos);
