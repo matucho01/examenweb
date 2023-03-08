@@ -44,11 +44,11 @@
                     <form class="formulario" method="POST" action="AutorizarController?ruta=login">
                         <div class="col">
                             <label for="username" class="fw-bold fs-5">Username</label>
-                            <input type="username" class="form-control" name="usuario" placeholder="Type a username">
+                            <input type="username" class="form-control" name="usuario" placeholder="Type a username" required>
                         </div>
                         <div>
                             <label for="password" class="fw-bold fs-5">Password</label>
-                            <input type="password" class="form-control" name="password" placeholder="Type a password">
+                            <input type="password" class="form-control" name="password" placeholder="Type a password" required>
                         </div>
                         <div class="form-check form-switch ">
                             <input class="form-check-input" type="checkbox" id="rememberMe">
