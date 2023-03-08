@@ -60,7 +60,7 @@ public class RegistrarMovimientoController extends HttpServlet {
 	private void saveEgreso(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idCuentaOrigen = Integer.parseInt(request.getParameter("cuentaingresoegreso"));
 		Cuenta cuentaOrigen = DAOFactory.getFactory().getCuentaDAO().getById(idCuentaOrigen);
-		int idCuentaDestino = Integer.parseInt(request.getParameter("cuentasegreso"));
+		int idCuentaDestino = Integer.parseInt(request.getParameter("cuentaegreso"));
 		Cuenta cuentaDestino = DAOFactory.getFactory().getCuentaDAO().getById(idCuentaDestino);
 		String concepto = request.getParameter("concepto");
 		System.out.println(request.getParameter("fecha"));

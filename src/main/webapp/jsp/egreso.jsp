@@ -38,7 +38,7 @@
                             </select>
     
                             <label class="enlace fw-bold me-2">Destination account </label>
-                            <select  name="cuentasegreso" class="border rounded mt-2 w-50" >
+                            <select  name="cuentaegreso" class="border rounded mt-2 w-50" >
                                 <c:forEach items="${cuentasegreso}" var="cuentaegreso">
                                     <option value="${cuentaegreso.id}" >${cuentaegreso.nombre}</option>
                                 </c:forEach>
