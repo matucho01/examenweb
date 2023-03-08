@@ -44,11 +44,11 @@
                     <form class="formulario">
                         <div class="col">
                             <label for="username" class="fw-bold fs-5">Username</label>
-                            <input type="username" class="form-control" id="username" placeholder="Type an username">
+                            <input type="username" class="form-control" name="username" placeholder="Type an username">
                         </div>
                         <div>
                             <label for="password" class="fw-bold fs-5">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Type a password">
+                            <input type="password" class="form-control" name="password" placeholder="Type a password">
                         </div>
                         <div class="form-check form-switch ">
                             <input class="form-check-input" type="checkbox" id="rememberMe">

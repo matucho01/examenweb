@@ -18,42 +18,54 @@ import utilidades.Mes;
 @WebServlet("/DashboardController")
 public class DashboardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public DashboardController() {
-        super();
-    }
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	public DashboardController() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		ruteador(request, response);
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		ruteador(request, response);
 	}
-	
-	private void ruteador(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String ruta = (request.getParameter("ruta")==null?"ver":request.getParameter("ruta"));
-		
-		switch(ruta) {
+
+	private void ruteador(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String ruta = (request.getParameter("ruta") == null ? "ver" : request.getParameter("ruta"));
+
+		switch (ruta) {
 		case "ver":
 			showDashboard(request, response);
 			break;
-		
 		case "login":
-			showDashboard(request, response);
+			showLogin(request, response);
 			break;
-	}
-	}
-	
-	private void showDashboard(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int mes = LocalDate.now().getMonth().getValue();
-		
-		if(request.getParameter("mes")!=null) {
-			mes = Integer.parseInt( request.getParameter("mes"));
 		}
 		
+	}
+
+	private void showLogin(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
+
+	}
+
+	private void showDashboard(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int mes = LocalDate.now().getMonth().getValue();
+
+		if (request.getParameter("mes") != null) {
+			mes = Integer.parseInt(request.getParameter("mes"));
+		}
+
 		List<CuentaDTO> conjuntoingresos = DAOFactory.getFactory().getCuentaDAO().getConsolidadoCuentasIngreso(mes);
 		List<CuentaDTO> conjuntogastos = DAOFactory.getFactory().getCuentaDAO().getConsolidadoCuentsEgreso(mes);
 		List<Cuenta> conjuntoingresogasto = DAOFactory.getFactory().getCuentaDAO().getConsolidadoCuentasIngresoEgreso();
-		
+
 		request.setAttribute("messeleccionado", mes);
 		request.setAttribute("meses", Mes.getMeses());
 		request.setAttribute("ingresos", conjuntoingresos);

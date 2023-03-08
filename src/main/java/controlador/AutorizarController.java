@@ -46,7 +46,7 @@ public class AutorizarController extends HttpServlet {
 	private void login(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		// 1.- Obtengo parametros
-		String usuario = request.getParameter("usuario");
+		String usuario = request.getParameter("username");
 		String clave = request.getParameter("password");
 		
 		// 2.- Llamo al modelo
@@ -58,7 +58,7 @@ public class AutorizarController extends HttpServlet {
 			sesion.setAttribute("usuarioLogeado", personaAutorizada);
 			
 			// 3.- Llamo al siguiente controlador
-			request.getRequestDispatcher("GestionarPersonasController?ruta=listar").forward(request, response);
+			request.getRequestDispatcher("DashboardController?ruta=ver").forward(request, response);
 			
 		} else {
 			// Me la regreso al Login
