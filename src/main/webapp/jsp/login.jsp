@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Fluxé | Login</title>
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <title>Login</title>
  <link rel="shortcut icon" href="./assets/f.png"/>
@@ -37,7 +37,7 @@
                 <div class="row">
                     <div class="col">
                         <h1>Login</h1>
-                        <h2>Start manage your money</h2>
+                        <h2>Start managing your money</h2>
                     </div>
                 </div>
                 <div class="row">
