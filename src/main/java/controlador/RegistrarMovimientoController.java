@@ -74,8 +74,6 @@ public class RegistrarMovimientoController extends HttpServlet {
 		}
 		double valor = Double.parseDouble(request.getParameter("valor"));
 		
-		System.out.println("valor " + valor + " getTotal " + cuentaOrigen.getTotal());
-		
 		if (cuentaOrigen.getTotal() >= valor) {
 			cuentaOrigen.setTotal(cuentaOrigen.getTotal()-valor);
 			cuentaDestino.setTotal(cuentaDestino.getTotal()-valor);
@@ -86,13 +84,7 @@ public class RegistrarMovimientoController extends HttpServlet {
 			DAOFactory.getFactory().getCuentaDAO().update(cuentaOrigen);
 			DAOFactory.getFactory().getCuentaDAO().update(cuentaDestino);
 		} else {
-			//request.getRequestDispatcher("/jsp/error.jsp").forward(request, response);
-			response.setContentType("text/html"); 
-			PrintWriter out = response.getWriter(); 
-			out.println("<script type=\"text/javascript\">"); 
-			out.println("alert('NO HAY PLATA');"); 
-			out.println("location='/jsp/dashboard.jsp';");
-			out.println("</script>"); 
+			request.getRequestDispatcher("RegistrarMovimientoController?ruta=egreso").forward(request, response);
 		}
 		
 		request.getRequestDispatcher("DashboardController?ruta=ver").forward(request, response);
@@ -116,7 +108,6 @@ public class RegistrarMovimientoController extends HttpServlet {
 		int idCuentaDestino = Integer.parseInt(request.getParameter("cuentaingresoegreso"));
 		Cuenta cuentaDestino = DAOFactory.getFactory().getCuentaDAO().getById(idCuentaDestino);
 		String concepto = request.getParameter("concepto");
-		System.out.println(request.getParameter("fecha"));
 		Date fecha = null;
 		
 		try {
