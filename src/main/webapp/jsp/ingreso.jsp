@@ -24,12 +24,12 @@
             <hr class="mb-5">
             <form method="POST" action="RegistrarMovimientoController?ruta=guardarIngreso">
                 <fieldset>
-                    <div class="start-0 top-50 ms-3">
+                    <div class="start-0 top-50 ms-2">
                         <label class="enlace fw-bold me-3">Concept</label>
-                        <input type="text" name="concepto" class="border rounded w-50 mt-3 mb-4 p-2" placeholder="p.ej. Pago sueldo, chaucha, cobro." required>
+                        <input type="text" name="concepto" class="border rounded w-50 mt-3 mb-4 p-2 ms-1" placeholder="p.ej. Pago sueldo, chaucha, cobro." required>
                     </div>
                     <div class="d-flex flex-column">
-                        <div class="d-flex justify-content-center mt-2 mb-5">
+                        <div class="d-flex justify-content-center mt-2 mb-5 pt-4">
                             <label class="enlace fw-bold ms-2">Source account</label>
                             <select name="cuentaingreso" class="border rounded w-50 mt-2 me-3">
                                 <c:forEach items="${cuentasingreso}" var="cuentaingreso">
@@ -46,17 +46,17 @@
                         </div>
                         <div class="d-flex w-100">
                             <div class="col-6 ms-2">
-                                <label class="enlace fw-bold me-3">Amount</label>
+                                <label class="enlace fw-bold me-4">Amount</label>
                                 <input type="number" name="valor" step=".01" min="0" class="border rounded mt-3 w-50 p-2" id="" placeholder="25.0" required>
                             </div>
                             <div class="me-4 col-6">
-                                <label class="enlace fw-bold me-4">Date</label>
-                                <input type="date" name="fecha" class="p-2 border rounded mt-3 ms-3 w-50" required>
+                                <label class="enlace fw-bold me-5">Date</label>
+                                <input type="date" name="fecha" class="p-2 border rounded mt-3 ms-4 w-50" required>
                             </div>
                         </div>
                         <br>
                         <div class="w-100 d-flex justify-content-center">
-                      	  <input type="submit" value="Save" class="border rounded w-25 fw-bold m-1 guardar">
+                      	  <input type="submit" value="Save" class="border rounded w-25 fw-bold m-2 guardar">
                       	  </div>
                     </div>
                 </fieldset>
