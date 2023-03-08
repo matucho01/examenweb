@@ -15,7 +15,7 @@
     cursor: pointer;
 }
 .box_left{
-    background-color: rgba(237, 102, 102, 1);
+    background-color: rgb(47, 55, 147);
 }
 .box_circle{
     display: flex;
@@ -27,7 +27,7 @@
     width: 75%;
     height: 75%;
     border-radius: 50%;
-    background-color: rgba(240, 162, 162, 1);
+    background-color: rgb(162, 174, 240);
     display: flex;
     justify-content: center;
     align-items: center;

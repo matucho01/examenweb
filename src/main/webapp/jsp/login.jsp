@@ -50,12 +50,7 @@
                             <label for="password" class="fw-bold fs-5">Password</label>
                             <input type="password" class="form-control" name="password" placeholder="Type a password" required>
                         </div>
-                        <div class="form-check form-switch ">
-                            <input class="form-check-input" type="checkbox" id="rememberMe">
-                            <label class="form-check-label" for="rememberMe">
-                            Remember
-                            </label>
-                        </div>
+                        
                         <div class="col d-flex justify-content-center align-items-center">
                             <button class="btn btn-primary btn-block btn_log" type="submit">Login</button>
                         </div>
