@@ -16,7 +16,7 @@
                 <li><a href="DashboardController?ruta=ver" class="enlace list-inline-item m-2">Dashboard</a></li>
                 <li><a href="RegistrarMovimientoController?ruta=ingreso" class="enlace list-inline-item m-2">Incomes</a></li>
             </ul>
-        <div class="ms-auto me-4 p-2 fa-solid fa-user-circle fa-4x"></div>
+        <div class="ms-auto me-4 p-2 fa-solid fa-user-circle fa-2x">  ${nombreusuario}</div>
     </header>
     <div class="container bg-zul w-50 mt-5 border-bottom rounded position-absolute top-50 start-50 translate-middle h-75">
         <div>

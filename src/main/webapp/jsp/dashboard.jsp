@@ -26,7 +26,8 @@
 			<li><a href="RegistrarMovimientoController?ruta=egreso"
 				class="enlace list-inline-item m-2">Expenses</a></li>
 		</ul>
-		<div class="ms-auto me-4 p-2 fa-solid fa-user-circle fa-4x"></div>
+		<div class="ms-auto me-4 p-2 fa-solid fa-user-circle fa-2x">  ${nombreusuario}</div>
+		
 	</header>
 	<div class="mt-3">
 		<form method="get" action="DashboardController?ruta=ver">
