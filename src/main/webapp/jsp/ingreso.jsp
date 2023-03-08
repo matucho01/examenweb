@@ -13,8 +13,8 @@
     <header class="d-flex align-items-center bg-zul">
         <img class="logo p-2" src="./assets/logo.png" alt="logo de la aplicación fluxe">
             <ul class="list-inline d-flex mt-5">
-                <li><a href="DashboardController?ruta=ver" class="enlace list-inline-item m-2">Dashboard</a></li>
-                <li><a href="RegistrarMovimientoController?ruta=egreso" class="enlace list-inline-item m-2">Expenses</a></li>
+                <li><a href="DashboardController?ruta=ver" class="enlace list-inline-item m-2 fs-3">Dashboard</a></li>
+                <li><a href="RegistrarMovimientoController?ruta=egreso" class="enlace list-inline-item m-2 fs-3">Expenses</a></li>
             </ul>
         <div class="ms-auto me-4 p-2 fa-solid fa-user-circle fa-2x">  ${nombreusuario}</div>
     </header>
