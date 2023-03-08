@@ -59,7 +59,7 @@
 				<div class="img-car">
 					<img src="./images/img_pago.png" alt="">
 				</div>
-				<p class="w-75 fs-5">Transfer between accounts whithout
+				<p class="w-75 fs-5">Transfer between accounts without
 					limitations</p>
 			</div>
 			<div class="">
