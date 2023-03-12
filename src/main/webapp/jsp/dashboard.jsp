@@ -61,7 +61,7 @@
 	</div>
 	
 	<div class="mt-3 mb-3 bg-zul">
-		<h1 class="titulo mt-2">Income</h1>
+		<h1 class="titulo mt-2">Incomes</h1>
 	</div>
 	<div class="cards d-flex overflow-x-auto">
 		<c:forEach items="${ingresos}" var="ingreso">
