@@ -12,17 +12,37 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import modelo.dao.GenericDAO;
-
+/**
+ * Clase concreta que implemeta los metodos de GenericDAO para realizar
+ * las operaciones CRUD con las diferentes entidades
+ * @param <T> Clase de la entidad
+ * @param <ID> Integer identificador del objeto de la entidad
+ */
 public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 
+	/**
+	 * Clase de la entidad a la que se le va a dar persistencia
+	 */
 	private Class<T> persistentClass;
+	/**
+	 * Interfaz del JPA que se encarga de gestionar las entidaddes
+	 */
 	protected EntityManager em;
 
+	/**
+	 * Constructor que recibe la Clase a la que se le va a persistencia
+	 * y crea el EntityManager apuntando a la unidad de persistencia
+	 * @param persistentClass Clase de la entidad
+	 */
 	public JPAGenericDAO(Class<T> persistentClass) {
 		this.persistentClass = persistentClass;
 		this.em = Persistence.createEntityManagerFactory("examenweb").createEntityManager();
 	}
 
+	/**
+	 * Guarda el objeto enviado como una tupla en la unidad de persistencia
+	 * @param entity Instancia de una entidad 
+	 */
 	public void create(T entity) {
 		em.getTransaction().begin();
 		try {
@@ -35,10 +55,21 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 		}
 	}
 
+	/**
+	 * Obtiene un objeto de la unidad de persistencia segun 
+	 * su Identificaor
+	 * @param id Identificador numerico del objeto
+	 * @return Objeto de una entidad
+	 */
 	public T getById(ID id) {
 		return em.find(persistentClass, id);
 	}
 
+	/**
+	 * Realiza la operacion de UPDATE en la unidad de persistencia
+	 * con la intancia especificada
+	 * @param entity Instancia de una entidad 
+	 */
 	public void update(T entity) {
 		em.getTransaction().begin();
 		try {
@@ -52,6 +83,11 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 
 	}
 
+	/**
+	 * Realiza la operacion de DELETE en la unidad de persistencia
+	 * eliminando la instancia que se especifique
+	 * @param entity Instancia de una entidad 
+	 */
 	public void delete(T entity) {
 		em.getTransaction().begin();
 		try {
@@ -65,6 +101,11 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 
 	}
 
+	/**
+	 * Realiza la operacion de DELETE en la unidad de persistencia
+	 * eliminando la instancia especificada con su identificador
+	 * @param id Identificador de una instancia de las entidades
+	 */
 	public void deleteByID(ID id) {
 		T entity = this.getById(id);
 		if (entity != null)
@@ -73,94 +114,10 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 	}
 
 	/**
-	 * @author carlos iniguez
-	 * @return Lista de Entidades basado en parametros
-	 * @see Pagina 28 y 29 de Diapositiva 4.- Persistencia.
-	 * @param attributes Lista (String) de campos sobre los cuales se va a realizar
-	 *                   la busqueda
-	 * @param values     Lista (String) de valores que pueden tomar los campos de
-	 *                   attributes
-	 * @param order      Nombre del Campo por el cual se realizará el ordenamiento.
-	 *                   Este siempre es Ascendente
-	 * @param index      Numero de indice de fila para presentar ( paginacion)
-	 * @param size       Numero de filas que se deben presentar (paginacion). Si
-	 *                   pones -1 o 0 no se tiene paginacion.
+	 * Realiza la operacion de SELECT en la unidad de persistencia
+	 * retornano todas las tuplas de una tabla
+	 * @return Lista de objetos de una entidad
 	 */
-	@SuppressWarnings("unchecked")
-	public List<T> get(String[] attributes, String[] values) {
-		// Se crea un criterio de consulta
-		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-		CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(this.persistentClass);
-		// Se establece la clausula FROM
-		Root<T> root = criteriaQuery.from(this.persistentClass);
-		// Se establece la clausula SELECT
-		criteriaQuery.select(root); // criteriaQuery.multiselect(root.get(atr))
-		// Se configuran los predicados, combinados por AND
-		Predicate predicate = criteriaBuilder.conjunction();
-		for (int i = 0; i < attributes.length; i++) {
-			Predicate sig = criteriaBuilder.like(root.get(attributes[i]).as(String.class), values[i]);
-			// Predicate sig =
-			// criteriaBuilder.like(root.get(attributes[i]).as(String.class),values[i]);
-			predicate = criteriaBuilder.and(predicate, sig);
-		}
-		// Se establece el WHERE
-		criteriaQuery.where(predicate);
-
-		Query query = em.createQuery(criteriaQuery);
-		return query.getResultList();
-
-	}
-
-	/**
-	 * @author carlos iniguez
-	 * @return Lista de Usuarios basado en parametros y paginacion
-	 * @see Pagina 28 y 29 de Diapositiva 4.- Persistencia.
-	 * @param attributes Lista (String) de campos sobre los cuales se va a realizar
-	 *                   la busqueda
-	 * @param values     Lista (String) de valores que pueden tomar los campos de
-	 *                   attributes
-	 * @param order      Nombre del Campo por el cual se realizará el ordenamiento.
-	 *                   Este siempre es Ascendente
-	 * @param index      Numero de indice de fila para presentar ( paginacion)
-	 * @param size       Numero de filas que se deben presentar (paginacion). Si
-	 *                   pones -1 o 0 no se tiene paginacion.
-	 */
-	@SuppressWarnings("unchecked")
-	public List<T> get(String[] attributes, String[] values, String order, int index, int size) {
-		// Se crea un criterio de consulta
-		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-		CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(this.persistentClass);
-		// Se establece la clausula FROM
-		Root<T> root = criteriaQuery.from(this.persistentClass);
-		// Se establece la clausula SELECT
-		criteriaQuery.select(root); // criteriaQuery.multiselect(root.get(atr))
-		// Se configuran los predicados, combinados por AND
-		Predicate predicate = criteriaBuilder.conjunction();
-		for (int i = 0; i < attributes.length; i++) {
-			Predicate sig = criteriaBuilder.like(root.get(attributes[i]).as(String.class), values[i]);
-			// Predicate sig =
-			// criteriaBuilder.like(root.get(attributes[i]).as(String.class),
-			// values[i]);
-			predicate = criteriaBuilder.and(predicate, sig);
-		}
-		// Se establece el WHERE
-		criteriaQuery.where(predicate);
-		// Se establece el orden
-		if (order != null)
-			criteriaQuery.orderBy(criteriaBuilder.asc(root.get(order)));
-		// Se crea el resultado
-		if (index >= 0 && size > 0) {
-			TypedQuery<T> tq = em.createQuery(criteriaQuery);
-			tq.setFirstResult(index);
-			tq.setMaxResults(size); // Se realiza la query
-			return tq.getResultList();
-		} else {
-			// Se realiza la query
-			Query query = em.createQuery(criteriaQuery);
-			return query.getResultList();
-		}
-	}
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> get() {
@@ -170,8 +127,7 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 		// Se establece la clausula FROM
 		Root<T> root = criteriaQuery.from(this.persistentClass);
 		// Se establece la clausula SELECT
-		criteriaQuery.select(root); // criteriaQuery.multiselect(root.get(atr))
-		
+		criteriaQuery.select(root); 
 		Query query = em.createQuery(criteriaQuery);
 		return query.getResultList();
 	}

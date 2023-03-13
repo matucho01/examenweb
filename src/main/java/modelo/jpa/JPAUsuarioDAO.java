@@ -7,48 +7,27 @@ import javax.persistence.Query;
 import modelo.dao.UsuarioDAO;
 import modelo.entidades.Usuario;
 
+/**
+ * Clase concreta que hereda de JPAGenericDAO e implementa los metodos de la interfaz
+ * UsuarioDAO
+ */
 public class JPAUsuarioDAO extends JPAGenericDAO<Usuario, Integer> implements UsuarioDAO {
 
+	/**
+	 * Constructor de la clase que llama al constructor de su clase padre
+	 */
 	public JPAUsuarioDAO() {
 		super(Usuario.class);
 	}
 
-	@Override
-	public Usuario getById(Integer id) {
-		return null;
-	}
-
-	@Override
-	public List<Usuario> get() {
-		return null;
-	}
-
-	@Override
-	public List<Usuario> get(String[] attributes, String[] values) {
-		return null;
-	}
-
-	@Override
-	public List<Usuario> get(String[] attributes, String[] values, String order, int index, int size) {
-		return null;
-	}
-
-	@Override
-	public void create(Usuario entity) {
-	}
-
-	@Override
-	public void update(Usuario entity) {
-	}
-
-	@Override
-	public void delete(Usuario entity) {
-	}
-
-	@Override
-	public void deleteByID(Integer id) {
-	}
-	
+	/**
+	 * Implementacion del metodo autorizar, compara el nombre y clave del ususario ingresado
+	 * con los registros de la unidad de persistencia, si encuentra coincidencias retorna el
+	 * objeto del usuario, sino retorna null
+	 * @param nombre Nombre del usuario ingresado
+	 * @param clave Clave del usuario ingresado
+	 * @return Objeto e tipo Usuario o null
+	 */
 	@Override
 	public Usuario autorizar(String nombre, String clave) {
 		String JPQL = "SELECT u FROM Usuario u WHERE u.clave= :clave AND u.nombre= :nombre";
